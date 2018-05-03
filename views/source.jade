@@ -1,5 +1,10 @@
 extends layout
 
 block content
+  script(src="/javascripts/source.js")
   h1= title
-  input(type="button", value="配置mongodb连接信息")
+  input(type="button", value="Test Connection" onclick="connect()")
+  p ip address
+  input(type="text" id="address")
+  p port
+  input(type="text" id="port")
