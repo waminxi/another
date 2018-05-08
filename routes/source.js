@@ -1,5 +1,5 @@
 var express = require('express'),
-    users = require('../models/users');
+    DBInfo = require('../models/db');
 var router = express.Router();
 
 router.get('/', function (req, res) {
@@ -10,11 +10,13 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
     // console.log('post');
-    console.log(req.body['address']);
-    users.get("123",function(err){
-        console.log(err);
-    })
-    // res.redirect('/source');
+    var address = req.body['address'];
+    var port = req.body['port'];
+    var dbName = req.body['dbName'];
+    var c = new DBInfo();
+    var url = "mongodb://" + address + ":" + port;
+    c.connect(url, dbName);
+    res.redirect('/source');
 });
 
 module.exports = router;
