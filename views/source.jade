@@ -4,9 +4,15 @@ block content
   h1= title
   form(action="/source", method="post")
     input(type="submit", value="Test Connection")
+    div(class="spinner" id="loading")
+      div(class="rect1")
+      div(class="rect2")
+      div(class="rect3")
+      div(class="rect4")
+      div(class="rect5")
     p ip address
-    input(type="text" id="address" name="address")
+    input(id="address" name="address" type="text")
     p port
-    input(type="text" id="port" name="port")
+    input(id="port" name="port" type="text")
     p dbName
-    input(type="text" id="dbName" name="dbName")
+    input(id="dbName" name="dbName" type="text")
