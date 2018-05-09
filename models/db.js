@@ -13,14 +13,18 @@ function DBInfo() {
 
 module.exports = DBInfo;
 
-DBInfo.prototype.connect = function (url, dbName) {
-    MongoClient.connect(url, function (err, client) {
-        if (err == null) {
-            console.log("Connected successfully to server");
-            const db = client.db(dbName);
-            client.close();
-        } else {
-            console.log("Connected failed");
-        }
-    });
+// DBInfo.prototype.connect = function (url, dbName) {
+//     MongoClient.connect(url, function (err, client) {
+//         if (err == null) {
+//             console.log("Connected successfully to server");
+//             const db = client.db(dbName);
+//             client.close();
+//         } else {
+//             console.log("Connected failed");
+//         }
+//     });
+// }
+
+DBInfo.prototype.connect = function(url, dbName, callback){
+    MongoClient.connect(url, callback);
 }
