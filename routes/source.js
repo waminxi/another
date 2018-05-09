@@ -20,7 +20,8 @@ router.post('/', function (req, res) {
     var c = new DBInfo();
     var url = "mongodb://" + address + ":" + port;
     c.connect(url, dbName);
-    res.send(200);
+    // 返回json数据，注意引号
+    res.json('{"message":123}')
 });
 
 module.exports = router;
