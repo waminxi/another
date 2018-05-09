@@ -25,6 +25,20 @@ module.exports = DBInfo;
 //     });
 // }
 
-DBInfo.prototype.connect = function(url, dbName, callback){
+DBInfo.prototype.connect = function (url, callback) {
     MongoClient.connect(url, callback);
+}
+
+DBInfo.prototype.read = async function (url, dbName, collectionName, condition, callback) {
+    let client;
+    try {
+        client = await MongoClient.connect(url);
+        const db = client.db(dbName);
+        const col = db.collection(collectionName);
+        const docs = col.find(condition).limit(2).toArray();
+        console.log("docs -> " + docs);
+    } catch (error) {
+        console.log(error.stack);
+    }
+    client.close();
 }

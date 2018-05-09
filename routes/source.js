@@ -19,13 +19,16 @@ router.post('/', function (req, res) {
     var dbName = req.body['dbName'];
     var c = new DBInfo();
     var url = "mongodb://" + address + ":" + port;
-    c.connect(url, dbName, function (err, client) {
-        if (err == null) {
-            // 返回json数据，注意引号
-            res.json('{"message":"success"}');
-        } else {
-            res.json('{"message":"failure"}');
-        }
+    // c.connect(url, function (err, client) {
+    //     if (err == null) {
+    //         // 返回json数据，注意引号
+    //         res.json('{"message":"success"}');
+    //     } else {
+    //         res.json('{"message":"failure"}');
+    //     }
+    // });
+    c.read(url,"cdn","mongoBandWidth","{}",function(){
+
     });
 });
 
