@@ -1,8 +1,10 @@
+/**
+ * 作为router只处理server端的代码，
+ * 前端的js不在router中出现
+ */
 var express = require('express'),
-    DBInfo = require('../models/db'),
-    jsdom = require('jsdom');
+    DBInfo = require('../models/db');
 var router = express.Router();
-var $ = require('jquery')(jsdom.jsdom().defaultView);
 
 router.get('/', function (req, res) {
     res.render('source', {
@@ -11,15 +13,14 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    $("#loading").hide();
-
-    // var address = req.body['address'];
-    // var port = req.body['port'];
-    // var dbName = req.body['dbName'];
-    // var c = new DBInfo();
-    // var url = "mongodb://" + address + ":" + port;
-    // c.connect(url, dbName);
-    // res.redirect('/source');
+    // $("#loading").hide();// 这种前端事件，在router中无效
+    var address = req.body['address'];
+    var port = req.body['port'];
+    var dbName = req.body['dbName'];
+    var c = new DBInfo();
+    var url = "mongodb://" + address + ":" + port;
+    c.connect(url, dbName);
+    res.send(200);
 });
 
 module.exports = router;

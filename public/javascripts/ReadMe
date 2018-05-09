@@ -1,0 +1,6 @@
+一、这个文件夹javascripts就是前端用的js文件夹，nodejs的后台不会使用这里的js文件。
+    1、所以在这个文件夹下，如果需要使用jquery，requirejs，ajax等，需要将js代码引入到这个文件夹，然后再模板文件下引入。
+
+二、这个文件夹之外的js文件，都是nodejs后台使用的js文件，即服务器端js代码。
+    1、这个文件夹之外需要使用jquery，require等，需要在package.json文件中引入（npm包管理器）。然后直接require使用即可。
+

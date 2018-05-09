@@ -1,18 +1,18 @@
 extends layout
 
 block content
+  script(src="./javascripts/source.js")
   h1= title
-  form(action="/source", method="post")
-    input(type="submit", value="Test Connection")
-    div(class="spinner" id="loading")
-      div(class="rect1")
-      div(class="rect2")
-      div(class="rect3")
-      div(class="rect4")
-      div(class="rect5")
-    p ip address
-    input(id="address" name="address" type="text")
-    p port
-    input(id="port" name="port" type="text")
-    p dbName
-    input(id="dbName" name="dbName" type="text")
+  input(type="submit", value="Test Connection" id="submit")
+  div(class="spinner" id="loading")
+    div(class="rect1")
+    div(class="rect2")
+    div(class="rect3")
+    div(class="rect4")
+    div(class="rect5")
+  p ip address
+  input(id="address" name="address" type="text")
+  p port
+  input(id="port" name="port" type="text")
+  p dbName
+  input(id="dbName" name="dbName" type="text")
