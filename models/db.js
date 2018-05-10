@@ -35,8 +35,8 @@ DBInfo.prototype.read = async function (url, dbName, collectionName, condition, 
         client = await MongoClient.connect(url);
         const db = client.db(dbName);
         const col = db.collection(collectionName);
-        const docs = col.find(condition).limit(2).toArray();
-        console.log("docs -> " + docs);
+        const docs = await col.find(condition).limit(2).toArray();
+        callback(docs);
     } catch (error) {
         console.log(error.stack);
     }

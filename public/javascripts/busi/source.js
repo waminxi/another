@@ -28,10 +28,11 @@ $(document).ready(function () {
             timeout: 5000,
             success: function (data) {
                 console.log(data);
+                // 将返回的json 转为 js object
                 var data = $.parseJSON(data);
                 $("#loading").hide();
-                console.log(data.message);
-                alert(data.message);
+                console.log(data);
+                alert(data.user_id);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 $("#loading").hide();
