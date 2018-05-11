@@ -3,16 +3,24 @@ extends layout
 block content
   script(src="./javascripts/busi/source.js")
   h1= title
-  input(type="submit", value="Test Connection" id="submit")
   div(class="spinner" id="loading")
     div(class="rect1")
     div(class="rect2")
     div(class="rect3")
     div(class="rect4")
     div(class="rect5")
-  p ip address
-  input(id="address" name="address" type="text")
-  p port
-  input(id="port" name="port" type="text")
-  p dbName
-  input(id="dbName" name="dbName" type="text")
+  div
+    div(class="col-xs-3")
+      p ip地址
+      input(id="address" name="address" type="text")
+    div(class="col-xs-3")
+      p 端口
+      input(id="port" name="port" type="text")
+    div(class="col-xs-3")
+      p 数据库
+      input(id="dbName" name="dbName" type="text")
+    div(class="col-xs-3")
+      p 集合
+      input(id="collName" name="collName" type="text")
+  input(type="submit", value="载入数据" id="submit")
+  table(id="table")

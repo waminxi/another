@@ -17,6 +17,7 @@ router.post('/', function (req, res) {
     var address = req.body['address'];
     var port = req.body['port'];
     var dbName = req.body['dbName'];
+    var collName = req.body['collName'];
     var c = new DBInfo();
     var url = "mongodb://" + address + ":" + port;
     console.log("url -> " + url);
@@ -28,9 +29,9 @@ router.post('/', function (req, res) {
     //         res.json('{"message":"failure"}');
     //     }
     // });
-    c.read(url, "cdn", "mongoBandWidth", "{}", function (data) {
+    c.read(url, dbName, collName, "{}", function (data) {
         // 将返回的 js object 转为 json ---- JSON.stringify(data[0])
-        res.json(JSON.stringify(data[0]));
+        res.json(JSON.stringify(data));
     });
 });
 

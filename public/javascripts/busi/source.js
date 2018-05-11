@@ -1,11 +1,53 @@
 $(document).ready(function () {
     $("#loading").hide();
+
+    $('#table').bootstrapTable({
+        pagination: true,                                        //是否显示分页（*）
+        pageNumber: 1,                                           //初始化加载第一页，默认第一页
+        pageSize: 10,                                            //每页的记录行数（*）
+        pageList: [10, 25, 50, 100],                                //可供选择的每页的行数（*）
+        striped: true,                                            //是否显示行间隔色
+        columns: [
+            {
+                field: 'user_id',
+                title: '用户id'
+            }, {
+                field: 'name',
+                title: '用户姓名'
+            }, {
+                field: 'date_time',
+                title: '时间戳'
+            }, {
+                field: 'url',
+                title: '域名'
+            }, {
+                field: 'day',
+                title: '时间'
+            }, {
+                field: 'bandwidth',
+                title: '带宽'
+            }, {
+                field: 'flow',
+                title: '流量'
+            }, {
+                field: 'hitrate',
+                title: '命中率'
+            }, {
+                field: 'hitnum',
+                title: '命中数'
+            }, {
+                field: 'unhitnum',
+                title: '未命中数'
+            }]
+    }).init();
+
     $("#submit").on("click", function (event) {
         $("#loading").show();
         var params = {
             address: $("#address").val(),
             port: $("#port").val(),
-            dbName: $("#dbName").val()
+            dbName: $("#dbName").val(),
+            collName: $("#collName").val()
         };
         $.ajax({
             data: params,
@@ -32,7 +74,8 @@ $(document).ready(function () {
                 var data = $.parseJSON(data);
                 $("#loading").hide();
                 console.log(data);
-                alert(data.user_id);
+                // alert(data.user_id);
+                $('#table').bootstrapTable('load', data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 $("#loading").hide();
@@ -40,4 +83,5 @@ $(document).ready(function () {
             }
         })
     });
+
 });
