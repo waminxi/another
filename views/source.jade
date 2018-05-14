@@ -22,5 +22,9 @@ block content
     div(class="col-xs-3")
       p 集合
       input(id="collName" name="collName" type="text")
-  input(type="submit", value="载入数据" id="submit")
+  div(id="toolbar" class="btn-group")
+    button(class="btn btn-default" id="submit")
+      span(class="glyphicon")载入数据
+    button(class="btn btn-default" id="submit")
+      span(class="glyphicon")导出数据
   table(id="table")

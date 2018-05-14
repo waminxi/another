@@ -29,13 +29,13 @@ DBInfo.prototype.connect = function (url, callback) {
     MongoClient.connect(url, callback);
 }
 
-DBInfo.prototype.read = async function (url, dbName, collectionName, condition, callback) {
+DBInfo.prototype.read = async function (url, dbName, collectionName, condition, pageSize, callback) {
     let client;
     try {
         client = await MongoClient.connect(url);
         const db = client.db(dbName);
         const col = db.collection(collectionName);
-        const docs = await col.find(condition).toArray();
+        const docs = await col.find(condition).limit(pageSize).toArray();
         callback(docs);
     } catch (error) {
         console.log(error.stack);

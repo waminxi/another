@@ -29,7 +29,7 @@ router.post('/', function (req, res) {
     //         res.json('{"message":"failure"}');
     //     }
     // });
-    c.read(url, dbName, collName, "{}", function (data) {
+    c.read(url, dbName, collName, "{}", 20, function (data) {
         // 将返回的 js object 转为 json ---- JSON.stringify(data[0])
         res.json(JSON.stringify(data));
     });
